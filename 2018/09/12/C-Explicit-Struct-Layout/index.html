@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C#," />
 
 
 
@@ -87,12 +87,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yuxuan's Blog">
-<meta property="og:url" content="http://suyuxuan.github.io/index.html">
+<meta name="description" content="It‘s been a long time since this blog site was built up. So let me take some notes about c# structure layout here.
+In c#, it provides us ability to control the physical layout of data fields of struc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# Explicit Struct Layout">
+<meta property="og:url" content="http://suyuxuan.github.io/2018/09/12/C-Explicit-Struct-Layout/index.html">
 <meta property="og:site_name" content="Yuxuan's Blog">
+<meta property="og:description" content="It‘s been a long time since this blog site was built up. So let me take some notes about c# structure layout here.
+In c#, it provides us ability to control the physical layout of data fields of struc">
+<meta property="og:updated_time" content="2018-09-12T16:39:54.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yuxuan's Blog">
+<meta name="twitter:title" content="C# Explicit Struct Layout">
+<meta name="twitter:description" content="It‘s been a long time since this blog site was built up. So let me take some notes about c# structure layout here.
+In c#, it provides us ability to control the physical layout of data fields of struc">
 
 
 
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://suyuxuan.github.io/"/>
+  <link rel="canonical" href="http://suyuxuan.github.io/2018/09/12/C-Explicit-Struct-Layout/"/>
 
 
 
 
 
-  <title> Yuxuan's Blog </title>
+  <title> C# Explicit Struct Layout | Yuxuan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -161,9 +168,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,9 +261,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -288,10 +293,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2018/09/12/C-Explicit-Struct-Layout/" itemprop="url">
-                  C# Explicit Struct Layout
-                </a>
+                C# Explicit Struct Layout
               
             
           </h1>
@@ -374,9 +376,7 @@
       
 
       
-        
-          
-            <p>It‘s been a long time since this blog site was built up. So let me take some notes about c# structure layout here.</p>
+        <p>It‘s been a long time since this blog site was built up. So let me take some notes about c# structure layout here.</p>
 <p>In c#, it provides us ability to control the physical layout of data fields of structure in memory. The following code block shows how we change the memory location of fields in a structure by using <code>LayoutKind.Explicit</code>:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">[StructLayout (LayoutKind.Explicit)]</div><div class="line"><span class="keyword">public</span> <span class="keyword">struct</span> CompositedBits &#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CompositedBits</span> (<span class="params"><span class="keyword">ulong</span> ab</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.A = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.B = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.AB = ab;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CompositedBits</span> (<span class="params"><span class="keyword">uint</span> a, <span class="keyword">uint</span> b</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.AB = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.A = a;</div><div class="line">        <span class="keyword">this</span>.B = b;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    [FieldOffset (<span class="number">0</span>)]</div><div class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">uint</span> A;</div><div class="line"></div><div class="line">    [FieldOffset (<span class="number">4</span>)]</div><div class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">uint</span> B;</div><div class="line"></div><div class="line">    [FieldOffset (<span class="number">0</span>)] <span class="comment">//point AB location to 0 similiar with A;</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">ulong</span> AB;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span> (<span class="params"><span class="keyword">string</span>[] args</span>) </span>&#123;</div><div class="line"></div><div class="line">    CompositedBits bits = <span class="keyword">new</span> CompositedBits (<span class="number">0x0</span>, <span class="number">0x88888888</span>);</div><div class="line">    Console.WriteLine (<span class="string">"0x&#123;0&#125;"</span>, bits.AB.ToString (<span class="string">"X"</span>));</div><div class="line">    <span class="comment">// 0x8888888800000000</span></div><div class="line"></div><div class="line">    CompositedBits bits2 = <span class="keyword">new</span> CompositedBits (<span class="number">0x1111111133333333</span>);</div><div class="line">    Console.WriteLine (<span class="string">"0x&#123;0&#125;"</span>, bits2.A.ToString (<span class="string">"X"</span>));<span class="comment">//0x33333333</span></div><div class="line">    Console.WriteLine (<span class="string">"0x&#123;0&#125;"</span>, bits2.B.ToString (<span class="string">"X"</span>));<span class="comment">//0x11111111</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>From above outputs, it indicates field <code>AB</code> sharing 64bits with <code>A</code> and <code>B</code>. We can also write some magic code with this feature shown as below:</p>
@@ -384,197 +384,72 @@
 <p>Instead of value type, Two fields of reference type are declared in the structure. Again, mark their <code>FieldOffset</code> as 0. After that, print the results of calling <code>Bark()</code> by these two fields. Obviously, it works and it calls <code>BClazz.ToString()</code> in <code>pointers.APointer.Bark()</code> . That makes sense because <code>APointer</code> is sharing the memory with <code>BPointer</code> where the underlying object is of type <code>BClazz</code>.</p>
 <p>Note: we cannot call virtual method here. If <code>AClazz.Bark()</code> is virtual and we use instance of ClazzB to call it, it just throws Exception.</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://suyuxuan.github.io/2017/03/19/how-to-config-go-debugger-in-vscode-for-mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yuxuan Su">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/3740392?v=3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yuxuan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/19/how-to-config-go-debugger-in-vscode-for-mac/" itemprop="url">
-                  How to config Go debugger in VSCode for Mac
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T21:39:06+08:00">
-                2017-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Go/" itemprop="url" rel="index">
-                    <span itemprop="name">Go</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/C/" rel="tag"># C#</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/19/how-to-config-go-debugger-in-vscode-for-mac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/how-to-config-go-debugger-in-vscode-for-mac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <h2 id="1-Installation-of-Go-Plugin-for-VSCode"><a href="#1-Installation-of-Go-Plugin-for-VSCode" class="headerlink" title="1.Installation of Go Plugin for VSCode"></a>1.Installation of Go Plugin for VSCode</h2><p>Search and install Go Plugin by @lukehoban on VSCode Extensions.</p>
-<h2 id="2-Installation-of-Debugger-–-Delve"><a href="#2-Installation-of-Debugger-–-Delve" class="headerlink" title="2.Installation of Debugger – Delve"></a>2.Installation of Debugger – <a href="https://github.com/derekparker/delve" target="_blank" rel="external">Delve</a></h2><p>Instead of Homebrew, pls <a href="https://github.com/derekparker/delve/blob/master/Documentation/installation/osx/install.md" target="_blank" rel="external">install Delve manually</a>. Or there will be some issues when you debug Go project from VSCode.</p>
-<p>Attached sample of launch.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</div><div class="line">    <span class="attr">"configurations"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">"name"</span>: <span class="string">"Launch"</span>,</div><div class="line">            <span class="attr">"type"</span>: <span class="string">"go"</span>,</div><div class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</div><div class="line">            <span class="attr">"mode"</span>: <span class="string">"debug"</span>,</div><div class="line">            <span class="attr">"remotePath"</span>: <span class="string">""</span>,</div><div class="line">            <span class="attr">"port"</span>: <span class="number">9000</span>,</div><div class="line">            <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;"</span>,</div><div class="line">            <span class="attr">"env"</span>: &#123;&#125;,</div><div class="line">            <span class="attr">"args"</span>: [],</div><div class="line">            <span class="attr">"showLog"</span>: <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/19/how-to-config-go-debugger-in-vscode-for-mac/" rel="next" title="How to config Go debugger in VSCode for Mac">
+                <i class="fa fa-chevron-left"></i> How to config Go debugger in VSCode for Mac
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -582,6 +457,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/09/12/C-Explicit-Struct-Layout/"
+           data-title="C# Explicit Struct Layout" data-url="http://suyuxuan.github.io/2018/09/12/C-Explicit-Struct-Layout/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -787,6 +670,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
