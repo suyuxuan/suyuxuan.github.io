@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Yuxuan&#39;s Blog">
 <meta property="og:description" content="It’s been a long time since this blog site was built up. So let me take some notes about c# structure layout here. In c#, it provides ability to control the physical layout of data fields of structure">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-13T17:04:04.287Z">
+<meta property="og:updated_time" content="2018-09-15T06:11:52.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# Explicit Struct Layout">
 <meta name="twitter:description" content="It’s been a long time since this blog site was built up. So let me take some notes about c# structure layout here. In c#, it provides ability to control the physical layout of data fields of structure">
@@ -343,16 +343,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/12/C-Explicit-Struct-Layout/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/12/C-Explicit-Struct-Layout/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -377,6 +367,7 @@
       
         <p>It’s been a long time since this blog site was built up. So let me take some notes about c# structure layout here.</p>
 <p>In c#, it provides ability to control the physical layout of data fields of structure in memory. The following code block shows how to change field memory location in a structure by using <code>LayoutKind.Explicit</code>:</p>
+<a id="more"></a>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[StructLayout (LayoutKind.Explicit)]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> CompositedBits &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CompositedBits</span> (<span class="params"><span class="keyword">ulong</span> ab</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.A = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.B = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.AB = ab;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CompositedBits</span> (<span class="params"><span class="keyword">uint</span> a, <span class="keyword">uint</span> b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.AB = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.A = a;</span><br><span class="line">        <span class="keyword">this</span>.B = b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [FieldOffset (<span class="number">0</span>)]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">uint</span> A;</span><br><span class="line"></span><br><span class="line">    [FieldOffset (<span class="number">4</span>)]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">uint</span> B;</span><br><span class="line"></span><br><span class="line">    [FieldOffset (<span class="number">0</span>)] <span class="comment">//point AB location to 0 similiar with A;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">ulong</span> AB;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>In <code>CompositedBits</code>, three numeric fields have been created: A - <code>UInt32</code>, B - <code>UInt32</code> and AB - <code>UInt64</code>. Meanwhile, an attribute <code>[StructLayout (LayoutKind.Explicit)]</code> is added at the top of structure, also, <code>[FieldOffset]</code> for each fields. Memory offset is been set as 0 for AB which is similiar with A. Here I target to use AB to cover both A and B space.</p>
 <p>Now, let me fullfill an instance of <code>CompositedBits</code> and print the A, B and AB values to see if it’s the case we want.</p>
@@ -439,8 +430,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/C-Null-value-as-key-of-Dictionary/" rel="prev" title="C# Null value as key of Dictionary">
-                C# Null value as key of Dictionary <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/14/C-Null-value-as-key-of-Dictionary/" rel="prev" title="C# Null value as Dictionary Key">
+                C# Null value as Dictionary Key <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,10 +457,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2018/09/12/C-Explicit-Struct-Layout/"
-           data-title="C# Explicit Struct Layout" data-url="http://suyuxuan.github.io/2018/09/12/C-Explicit-Struct-Layout/">
-      </div>
     
   </div>
 
@@ -692,39 +679,32 @@
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"syxblog"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+
+
+
+	
+
+
+
+
+
   
 
 
 
 
 
+  
 
 
 
 
 
+  
 
 
 
