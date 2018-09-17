@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -87,13 +87,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yuxuan&#39;s Blog">
-<meta property="og:url" content="http://suyuxuan.github.io/archives/2017/index.html">
+<meta name="description" content="Sometimes we need to modify the date of a commit in git to show a readable history. In git, there are two fields to mark timestamp on each commit - Author Date and Commit Date. An answer from @eckes o">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git -  How to modify the timestamp of a commit">
+<meta property="og:url" content="http://suyuxuan.github.io/2018/09/17/Git-How-to-modify-the-timestamp-of-a-commit/index.html">
 <meta property="og:site_name" content="Yuxuan&#39;s Blog">
+<meta property="og:description" content="Sometimes we need to modify the date of a commit in git to show a readable history. In git, there are two fields to mark timestamp on each commit - Author Date and Commit Date. An answer from @eckes o">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-17T16:13:34.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yuxuan&#39;s Blog">
+<meta name="twitter:title" content="Git -  How to modify the timestamp of a commit">
+<meta name="twitter:description" content="Sometimes we need to modify the date of a commit in git to show a readable history. In git, there are two fields to mark timestamp on each commit - Author Date and Commit Date. An answer from @eckes o">
 
 
 
@@ -121,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://suyuxuan.github.io/archives/2017/"/>
+  <link rel="canonical" href="http://suyuxuan.github.io/2018/09/17/Git-How-to-modify-the-timestamp-of-a-commit/"/>
 
 
 
 
 
-  <title> Archive | Yuxuan's Blog </title>
+  <title> Git -  How to modify the timestamp of a commit | Yuxuan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -162,7 +167,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,66 +261,186 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 4 posts in total. Keep on posting.
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://suyuxuan.github.io/2018/09/17/Git-How-to-modify-the-timestamp-of-a-commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuxuan Su">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/3740392?v=3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yuxuan's Blog">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git -  How to modify the timestamp of a commit
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T22:59:50+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <p>Sometimes we need to modify the date of a commit in git to show a readable history.</p>
+<p>In git, there are two fields to mark timestamp on each commit - <code>Author Date</code> and <code>Commit Date</code>. An answer from @eckes on stackflow explains the diff between these two fields:<br><a href="https://stackoverflow.com/questions/11856983/why-git-authordate-is-different-from-commitdate" target="_blank" rel="noopener">https://stackoverflow.com/questions/11856983/why-git-authordate-is-different-from-commitdate</a></p>
+<a id="more"></a>
+<p>To overwrite author date we can use the command :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; date -R</span><br><span class="line"></span><br><span class="line">Mon, 17 Sep 2018 23:12:03 +0800</span><br><span class="line"></span><br><span class="line">&gt; git commit --amend --date=<span class="string">"Mon, 17 Sep 2018 23:12:03 +0800"</span></span><br></pre></td></tr></table></figure>
+<p>Author Date of current commit would be updated to <code>Mon, 17 Sep 2018 23:12:03 +0800</code> after the command.</p>
+<p>While if we want to modify the Commit Date, it would be a little more complicated:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; GIT_COMMITTER_DATE=<span class="string">'2018-09-17 00:00:00'</span> git commit --amend --no-edit --date <span class="string">'2018-09-17 00:00:00'</span></span><br></pre></td></tr></table></figure>
+<p>References:<br><a href="https://segmentfault.com/q/1010000015386964" target="_blank" rel="noopener">https://segmentfault.com/q/1010000015386964</a><br><a href="https://github.com/bitriddler/git-change-date" target="_blank" rel="noopener">https://github.com/bitriddler/git-change-date</a></p>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
         </div>
       
+
+      
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/14/C-Null-value-as-key-of-Dictionary/" rel="next" title="C# Null value as Dictionary Key">
+                <i class="fa fa-chevron-left"></i> C# Null value as Dictionary Key
+              </a>
+            
+          </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          <span class="post-nav-divider"></span>
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/03/19/how-to-config-go-debugger-in-vscode-for-mac/" itemprop="url">
-              
-                <span itemprop="name">How to config Go debugger in VSCode for Mac</span>
-              
-            </a>
-        
-      </h1>
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-19T21:39:06+08:00"
-              content="2017-03-19" >
-          03-19
-        </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -323,6 +448,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -528,11 +657,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
